@@ -11,13 +11,12 @@ model = ChatGoogleGenerativeAI(model="gemini-2.0-flash", google_api_key=api_key)
 
 # Schema
 class Review(BaseModel):
-    key_themes: Annotated[list[str],"Write down all the key themes discussed in the review"]
-    summary:Annotated[str,"A brief summary of review"]
-    sentiment:Annotated[Literal["pos","neg"],"Return sentiment of the review either negative , positive or neutral"]
-    pros:Annotated[Optional[list[str]],"Return all the pros of the review"]
-    cons:Annotated[Optional[list[str]],"Return all the cons of the review"]
-    name:Annotated[Optional[list[str]],"Return the name of the reviewer"]
-
+    key_themes: list[str] = Field(description="Write down all the key themes discussed in the review")
+    summary: str = Field(description="A brief summary of review")
+    sentiment:Literal["pos","neg"]=Field(description="A brief summary of review")
+    pros:Optional[list[str]]=Field(description="Return all the pros of the review")
+    cons:Optional[list[str]]=Field(description="Return all the pros of the review")
+    name:Optional[str]=Field(description="Return the name of the reviewer")
 
 structured_model = model.with_structured_output(Review)
 
