@@ -11,5 +11,5 @@ if not api_key:
 
 llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", google_api_key=api_key)
 
-result = llm.invoke("What is the capital of India?")
+result = llm.invoke("what does exponents mean in maths , generate a short and concise answer?")
 print(result.content) 

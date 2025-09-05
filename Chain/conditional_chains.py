@@ -26,6 +26,7 @@ parser2 = PydanticOutputParser(pydantic_object=Feedback)
 prompt1 = PromptTemplate(
     template='Classify the sentiment of the following feedback text into postive or negative \n {feedback} \n {format_instruction}',
     input_variables=['feedback'],
+    # Parser for the query
     partial_variables={'format_instruction':parser2.get_format_instructions()}
 )
 
